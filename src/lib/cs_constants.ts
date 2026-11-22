@@ -36,3 +36,14 @@ export const CS_PASSWORD_RULES = [
 
 export const cs_getPasswordErrors = (cs_password: string) =>
   CS_PASSWORD_RULES.filter((cs_rule) => !cs_rule.cs_test(cs_password)).map((cs_rule) => cs_rule.cs_message);
+
+export const CS_SERVICE_MODES = ["Home Visit", "Shop Drop-off"] as const;
+
+export const CS_SORT_OPTIONS = [
+  { cs_value: "newest", cs_label: "Newest first" },
+  { cs_value: "price_asc", cs_label: "Price: low to high" },
+  { cs_value: "price_desc", cs_label: "Price: high to low" },
+] as const;
+export type Cs_SortKey = (typeof CS_SORT_OPTIONS)[number]["cs_value"];
+
+export const CS_SERVICES_PAGE_LIMIT = 9;

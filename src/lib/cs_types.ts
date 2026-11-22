@@ -1,6 +1,6 @@
-import type { Cs_Category } from "@/lib/cs_constants";
+import type { CS_SERVICE_MODES, Cs_Category } from "@/lib/cs_constants";
 
-export type Cs_ServiceMode = "Home Visit" | "Shop Drop-off";
+export type Cs_ServiceMode = (typeof CS_SERVICE_MODES)[number];
 export type Cs_ApprovalStatus = "pending" | "approved" | "rejected";
 
 // Service as returned by the Express API
@@ -26,4 +26,11 @@ export interface Cs_Service {
 export interface Cs_ListResponse<T> {
   success: boolean;
   items: T[];
+}
+
+export interface Cs_PagedResponse<T> extends Cs_ListResponse<T> {
+  total: number;
+  page: number;
+  pages: number;
+  limit: number;
 }

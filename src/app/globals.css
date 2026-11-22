@@ -488,6 +488,39 @@
     @apply flex h-full flex-col rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-7;
   }
 
+  /* Browse services */
+  .cs_page_hero {
+    @apply border-b border-(--cs_border_color) pt-12 pb-10 md:pt-16 md:pb-12;
+  }
+
+  .cs_filter_bar {
+    @apply grid gap-3 rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-3 shadow-sm sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_repeat(3,minmax(0,12rem))_auto];
+  }
+
+  .cs_filter_search {
+    @apply flex h-11 items-center gap-2.5 rounded-xl border border-(--cs_border_color) bg-background px-3.5 transition-colors focus-within:border-(--cs_primary_color) focus-within:ring-3 focus-within:ring-ring/30 sm:col-span-2 lg:col-span-1;
+  }
+
+  .cs_select {
+    @apply h-11 w-full cursor-pointer appearance-none rounded-xl border border-(--cs_border_color) bg-background pr-9 pl-3.5 text-sm text-(--cs_heading_color) transition-colors outline-none hover:border-(--cs_primary_color)/50 focus-visible:border-(--cs_primary_color) focus-visible:ring-3 focus-visible:ring-ring/30 dark:scheme-dark;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+
+  .cs_page_link {
+    @apply inline-flex size-10 items-center justify-center rounded-xl border border-(--cs_border_color) bg-(--cs_card_color) text-sm font-semibold text-(--cs_heading_color) transition-colors hover:border-(--cs_primary_color) hover:text-(--cs_primary_color);
+  }
+
+  .cs_page_link.cs_active {
+    @apply pointer-events-none border-(--cs_primary_color) bg-(--cs_primary_color) text-(--cs_primary_text_color);
+  }
+
+  .cs_page_link.cs_disabled {
+    @apply pointer-events-none opacity-40;
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }
