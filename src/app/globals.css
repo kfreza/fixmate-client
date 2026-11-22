@@ -530,6 +530,15 @@
     @apply rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-6;
   }
 
+  .cs_role_notice {
+    @apply flex items-start gap-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm leading-relaxed text-amber-800 dark:text-amber-300;
+  }
+
+  .cs_input_readonly {
+    /* ! beats the dark:bg-input class on shadcn Input */
+    @apply cursor-not-allowed bg-(--cs_soft_color)! text-(--cs_body_color) focus-visible:ring-0;
+  }
+
   /* About */
   .cs_value_card {
     @apply flex items-start gap-4 rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-5;

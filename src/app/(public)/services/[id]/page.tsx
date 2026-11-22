@@ -7,6 +7,7 @@ import { CS_CATEGORY_ICONS } from "@/lib/cs_categoryIcons";
 import { cs_getServiceDetails } from "@/lib/cs_getServiceDetails";
 import Cs_ServiceBookingCard from "@/app/ui/ServiceBookingCard";
 import Cs_TechnicianCard from "@/app/ui/TechnicianCard";
+import Cs_RequestAction from "@/app/ui/RequestAction";
 
 export const generateMetadata = async ({ params }: PageProps<"/services/[id]">): Promise<Metadata> => {
   const { id: cs_serviceId } = await params;
@@ -79,7 +80,9 @@ const Cs_ServiceDetailsPage = async ({ params }: PageProps<"/services/[id]">) =>
         </div>
 
         <aside className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
-          <Cs_ServiceBookingCard cs_data={cs_service} />
+          <Cs_ServiceBookingCard cs_data={cs_service}>
+            <Cs_RequestAction cs_serviceId={cs_service._id} cs_serviceTitle={cs_service.title} />
+          </Cs_ServiceBookingCard>
           <Cs_TechnicianCard cs_data={cs_technician} cs_fallbackArea={cs_service.serviceArea} />
         </aside>
       </div>
