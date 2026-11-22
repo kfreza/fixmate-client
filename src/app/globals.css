@@ -285,6 +285,56 @@
     @apply inline-flex size-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-all hover:-translate-y-0.5 hover:border-(--cs_footer_accent) hover:text-(--cs_footer_accent);
   }
 
+  /* Auth pages */
+  .cs_auth_card {
+    @apply mx-auto grid max-w-5xl overflow-hidden rounded-3xl border border-(--cs_border_color) bg-(--cs_card_color) shadow-xl shadow-slate-900/5 lg:grid-cols-[0.9fr_1.1fr];
+  }
+
+  .cs_auth_panel {
+    @apply relative hidden flex-col justify-center bg-linear-to-br from-[#0b7f7b] to-[#0b1424] p-10 lg:flex xl:p-12;
+  }
+
+  .cs_auth_panel_icon {
+    @apply inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#2dd4bf];
+  }
+
+  /* Form */
+  .cs_form_label {
+    @apply text-sm font-medium text-(--cs_heading_color);
+  }
+
+  .cs_input {
+    @apply h-11 rounded-xl bg-(--cs_card_color) px-3.5;
+  }
+
+  .cs_field_error {
+    @apply text-xs font-medium text-destructive;
+  }
+
+  .cs_role_card {
+    @apply relative flex cursor-pointer flex-col gap-1 rounded-xl border-2 border-(--cs_border_color) p-4 transition-colors hover:border-(--cs_primary_color)/50 has-focus-visible:ring-3 has-focus-visible:ring-ring/50;
+  }
+
+  .cs_role_card.cs_active {
+    @apply border-(--cs_primary_color) bg-(--cs_primary_color)/5;
+  }
+
+  .cs_role_card_icon {
+    @apply mb-1 inline-flex size-8 items-center justify-center rounded-lg bg-(--cs_soft_color) text-(--cs_body_color);
+  }
+
+  .cs_role_card.cs_active .cs_role_card_icon {
+    @apply bg-(--cs_primary_color) text-(--cs_primary_text_color);
+  }
+
+  .cs_password_rule {
+    @apply flex items-center gap-1.5 text-xs text-(--cs_body_color);
+  }
+
+  .cs_password_rule.cs_active {
+    @apply text-emerald-600 dark:text-emerald-400;
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }

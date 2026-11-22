@@ -3,6 +3,7 @@ export type Cs_Role = (typeof CS_ROLES)[number];
 
 // Roles a user can pick on sign up
 export const CS_SIGNUP_ROLES = ["customer", "technician"] as const;
+export type Cs_SignupRole = (typeof CS_SIGNUP_ROLES)[number];
 
 export const CS_CATEGORIES = [
   "Smartphone",
