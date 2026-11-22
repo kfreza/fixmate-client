@@ -530,6 +530,28 @@
     @apply rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-6;
   }
 
+  /* About */
+  .cs_value_card {
+    @apply flex items-start gap-4 rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-5;
+  }
+
+  .cs_role_overview_card {
+    @apply flex h-full flex-col rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-7 transition-colors hover:border-(--cs_primary_color)/40;
+  }
+
+  .cs_cta_banner {
+    @apply flex flex-col gap-8 rounded-3xl border border-(--cs_border_color) bg-(--cs_card_color) p-8 md:p-12 lg:flex-row lg:items-center lg:justify-between;
+  }
+
+  /* 404 and loaders */
+  .cs_tools_illustration {
+    @apply size-48 md:size-60;
+  }
+
+  .cs_loader_icon {
+    @apply inline-flex size-14 animate-spin items-center justify-center rounded-2xl bg-(--cs_primary_color) text-(--cs_primary_text_color) shadow-md shadow-teal-700/20 [animation-duration:1.6s];
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }

@@ -48,3 +48,9 @@ export interface Cs_ServiceDetailsResponse {
   service: Cs_Service;
   technician: Cs_TechnicianSummary;
 }
+
+// Props Next.js passes to error.tsx
+export interface Cs_ErrorPageProps {
+  error: unknown;
+  retry: () => void;
+}
