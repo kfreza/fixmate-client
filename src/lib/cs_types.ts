@@ -54,3 +54,62 @@ export interface Cs_ErrorPageProps {
   error: unknown;
   retry: () => void;
 }
+
+export type Cs_BookingStatus = "requested" | "accepted" | "rejected" | "in-progress" | "completed" | "cancelled";
+export type Cs_PaymentStatus = "unpaid" | "paid";
+
+export interface Cs_StatusHistoryItem {
+  status: Cs_BookingStatus | "paid";
+  changedAt: string;
+}
+
+// Booking as returned by the Express API
+export interface Cs_Booking {
+  _id: string;
+  serviceId: string;
+  serviceTitle: string;
+  serviceImage: string;
+  category: Cs_Category;
+  basePrice: number;
+  technicianName: string;
+  technicianEmail: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  address: string;
+  preferredDate: string;
+  problemDescription: string;
+  status: Cs_BookingStatus;
+  finalAmount: number;
+  paymentStatus: Cs_PaymentStatus;
+  statusHistory: Cs_StatusHistoryItem[];
+  rating?: number;
+  review?: string;
+  createdAt: string;
+}
+
+// Chart series from /stats endpoints
+export interface Cs_StatusCount {
+  status: Cs_BookingStatus;
+  count: number;
+}
+
+export interface Cs_MonthAmount {
+  month: string;
+  label: string;
+  amount: number;
+}
+
+export interface Cs_CustomerStatsResponse {
+  success: boolean;
+  stats: {
+    totalBookings: number;
+    activeBookings: number;
+    completedBookings: number;
+    cancelledBookings: number;
+    totalSpent: number;
+    unpaidCount: number;
+    unpaidAmount: number;
+  };
+  charts: { bookingsByStatus: Cs_StatusCount[]; monthlySpending: Cs_MonthAmount[] };
+}
