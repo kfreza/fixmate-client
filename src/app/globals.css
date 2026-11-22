@@ -1,26 +1,189 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------- FixMate tokens ---------- */
+:root {
+  --cs_heading_color: #0f1b2d;
+  --cs_body_color: #4a5568;
+  --cs_primary_color: #0b7f7b;
+  --cs_primary_text_color: #ffffff;
+  --cs_accent_color: #f97316;
+  --cs_accent_text_color: #0f1b2d;
+  --cs_surface_color: #f7f9fc;
+  --cs_card_color: #ffffff;
+  --cs_soft_color: #eef2f7;
+  --cs_border_color: #e2e8f0;
+  --cs_grid_color: rgb(11 127 123 / 7%);
+}
+
+.dark {
+  --cs_heading_color: #e6edf5;
+  --cs_body_color: #9aa8bc;
+  --cs_primary_color: #2dd4bf;
+  --cs_primary_text_color: #04211f;
+  --cs_accent_color: #fb923c;
+  --cs_accent_text_color: #0b1220;
+  --cs_surface_color: #0b1220;
+  --cs_card_color: #111a2b;
+  --cs_soft_color: #1a2436;
+  --cs_border_color: #1f2a3d;
+  --cs_grid_color: rgb(45 212 191 / 6%);
+}
+
+/* ---------- shadcn tokens → FixMate tokens ---------- */
+:root,
+.dark {
+  --background: var(--cs_surface_color);
+  --foreground: var(--cs_heading_color);
+  --card: var(--cs_card_color);
+  --card-foreground: var(--cs_heading_color);
+  --popover: var(--cs_card_color);
+  --popover-foreground: var(--cs_heading_color);
+  --primary: var(--cs_primary_color);
+  --primary-foreground: var(--cs_primary_text_color);
+  --secondary: var(--cs_soft_color);
+  --secondary-foreground: var(--cs_heading_color);
+  --muted: var(--cs_soft_color);
+  --muted-foreground: var(--cs_body_color);
+  --accent: var(--cs_soft_color);
+  --accent-foreground: var(--cs_heading_color);
+  --border: var(--cs_border_color);
+  --input: var(--cs_border_color);
+  --ring: var(--cs_primary_color);
+  --chart-1: var(--cs_primary_color);
+  --chart-2: var(--cs_accent_color);
+  --chart-3: #6366f1;
+  --chart-4: #f59e0b;
+  --chart-5: #64748b;
+  --radius: 0.75rem;
+  --sidebar: var(--cs_card_color);
+  --sidebar-foreground: var(--cs_heading_color);
+  --sidebar-primary: var(--cs_primary_color);
+  --sidebar-primary-foreground: var(--cs_primary_text_color);
+  --sidebar-accent: var(--cs_soft_color);
+  --sidebar-accent-foreground: var(--cs_heading_color);
+  --sidebar-border: var(--cs_border_color);
+  --sidebar-ring: var(--cs_primary_color);
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --destructive: oklch(0.577 0.245 27.325);
+}
+
+.dark {
+  --destructive: oklch(0.704 0.191 22.216);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-cs-body);
+  --font-heading: var(--font-cs-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- FixMate classes ---------- */
+@layer components {
+  .cs_container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .cs_section {
+    @apply py-16 md:py-24;
+  }
+
+  .cs_section_title {
+    @apply font-heading text-3xl font-bold tracking-tight text-(--cs_heading_color) md:text-4xl;
+  }
+
+  .cs_section_subtitle {
+    @apply mt-3 max-w-2xl text-base leading-relaxed text-(--cs_body_color) md:text-lg;
+  }
+
+  .cs_btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  /* Accent CTA (Request Repair, Pay Now) */
+  .cs_btn_style_1 {
+    @apply bg-(--cs_accent_color) text-(--cs_accent_text_color) hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/25;
+  }
+
+  /* Primary */
+  .cs_btn_style_2 {
+    @apply bg-(--cs_primary_color) text-(--cs_primary_text_color) hover:-translate-y-0.5 hover:shadow-lg hover:shadow-teal-600/25;
+  }
+
+  /* Outline */
+  .cs_btn_style_3 {
+    @apply border border-(--cs_border_color) bg-(--cs_card_color) text-(--cs_heading_color) hover:border-(--cs_primary_color) hover:text-(--cs_primary_color);
+  }
+
+  /* Blueprint grid background */
+  .cs_blueprint_bg {
+    background-image:
+      linear-gradient(var(--cs_grid_color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--cs_grid_color) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
 }

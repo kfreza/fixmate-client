@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
+import Cs_ThemeProvider from "@/app/helper/ThemeProvider";
 import "./globals.css";
 
-const cs_geistSans = Geist({
-  variable: "--font-geist-sans",
+const cs_bodyFont = Inter({
+  variable: "--font-cs-body",
   subsets: ["latin"],
 });
 
-const cs_geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const cs_headingFont = Space_Grotesk({
+  variable: "--font-cs-heading",
   subsets: ["latin"],
 });
 
@@ -23,11 +25,18 @@ export const metadata: Metadata = {
 
 const Cs_RootLayout = ({ children }: LayoutProps<"/">) => {
   return (
+    // next-themes sets the class on <html> before hydration
     <html
       lang="en"
-      className={`${cs_geistSans.variable} ${cs_geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${cs_bodyFont.variable} ${cs_headingFont.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Cs_ThemeProvider>
+          {children}
+          <Toaster richColors position="top-right" closeButton />
+        </Cs_ThemeProvider>
+      </body>
     </html>
   );
 };
