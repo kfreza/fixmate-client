@@ -339,6 +339,87 @@
     @apply text-emerald-600 dark:text-emerald-400;
   }
 
+  /* Shared bits */
+  .cs_eyebrow {
+    @apply inline-flex w-fit items-center gap-2 rounded-full border border-(--cs_border_color) bg-(--cs_card_color) px-3.5 py-1.5 text-xs font-semibold tracking-wide text-(--cs_primary_color) uppercase;
+  }
+
+  .cs_chip {
+    @apply rounded-full border border-(--cs_border_color) bg-(--cs_card_color) px-3 py-1 text-(--cs_heading_color) transition-colors hover:border-(--cs_primary_color) hover:text-(--cs_primary_color);
+  }
+
+  .cs_empty_state {
+    @apply flex flex-col items-center gap-2 rounded-2xl border border-dashed border-(--cs_border_color) bg-(--cs_card_color) px-6 py-14 text-center;
+  }
+
+  /* Hero */
+  .cs_hero {
+    @apply relative overflow-hidden;
+  }
+
+  .cs_hero_title {
+    @apply text-4xl leading-[1.1] font-bold tracking-tight text-balance text-(--cs_heading_color) sm:text-5xl xl:text-6xl;
+  }
+
+  .cs_hero_highlight {
+    @apply relative text-(--cs_primary_color);
+  }
+
+  .cs_search_box {
+    @apply flex w-full max-w-xl items-center gap-2 rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-2 shadow-lg shadow-slate-900/5 transition-shadow focus-within:border-(--cs_primary_color) focus-within:ring-3 focus-within:ring-ring/30;
+  }
+
+  .cs_hero_glow {
+    @apply pointer-events-none absolute -inset-8 rounded-full bg-(--cs_primary_color)/15 blur-3xl;
+  }
+
+  .cs_tracker_card {
+    @apply rounded-3xl border border-(--cs_border_color) bg-(--cs_card_color) px-6 pt-14 pb-16 shadow-2xl shadow-slate-900/10 sm:px-8 sm:pt-8;
+  }
+
+  .cs_tracker_step {
+    @apply relative flex items-start gap-3.5;
+  }
+
+  /* Line to the next step */
+  .cs_tracker_step:not(:last-child)::after {
+    content: "";
+    @apply absolute top-8 bottom-[-14px] left-[13px] w-0.5 rounded-full bg-(--cs_border_color);
+  }
+
+  .cs_tracker_step.cs_done::after {
+    @apply bg-(--cs_primary_color);
+  }
+
+  .cs_tracker_dot {
+    @apply inline-flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-(--cs_border_color) bg-(--cs_card_color);
+  }
+
+  .cs_tracker_step.cs_done .cs_tracker_dot {
+    @apply border-(--cs_primary_color) bg-(--cs_primary_color) text-(--cs_primary_text_color);
+  }
+
+  .cs_tracker_step.cs_current .cs_tracker_dot {
+    @apply border-(--cs_accent_color) bg-(--cs_accent_color) text-(--cs_accent_text_color) ring-4 ring-(--cs_accent_color)/20;
+  }
+
+  .cs_float_card {
+    @apply absolute flex items-center gap-3 rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) px-4 py-3 shadow-xl shadow-slate-900/10;
+  }
+
+  /* Service card */
+  .cs_service_card {
+    @apply flex h-full flex-col overflow-hidden rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) transition-all duration-300 hover:-translate-y-1 hover:border-(--cs_primary_color)/40 hover:shadow-xl hover:shadow-slate-900/5;
+  }
+
+  .cs_service_card_image {
+    @apply relative aspect-[4/3] overflow-hidden bg-(--cs_soft_color);
+  }
+
+  .cs_service_card_category {
+    @apply absolute top-3 left-3 rounded-full bg-(--cs_card_color)/95 px-3 py-1 text-xs font-semibold text-(--cs_heading_color) shadow-sm backdrop-blur;
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }
