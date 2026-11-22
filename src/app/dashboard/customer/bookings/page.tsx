@@ -12,6 +12,8 @@ import Cs_StatusBadge from "@/app/ui/StatusBadge";
 import Cs_BookingDetailsDialog from "@/app/ui/BookingDetailsDialog";
 import Cs_CancelBookingButton from "@/app/ui/CancelBookingButton";
 import Cs_PayNowButton from "@/app/ui/PayNowButton";
+import Cs_ReviewDialog from "@/app/ui/ReviewDialog";
+import Cs_StarRating from "@/app/ui/StarRating";
 
 export const metadata: Metadata = { title: "My Bookings" };
 
@@ -36,6 +38,15 @@ const Cs_Actions = ({ cs_data }: { cs_data: Cs_Booking }) => (
   <div className="flex items-center gap-1.5 whitespace-nowrap">
     <Cs_BookingDetailsDialog cs_data={cs_data} />
     {cs_data.status === "requested" && <Cs_CancelBookingButton cs_bookingId={cs_data._id} cs_serviceTitle={cs_data.serviceTitle} />}
+    {/* Reviews open once the job is paid; afterwards show the stars given */}
+    {cs_data.paymentStatus === "paid" &&
+      (cs_data.rating ? (
+        <span className="flex items-center gap-1.5 px-2" title="Your rating">
+          <Cs_StarRating cs_value={cs_data.rating} />
+        </span>
+      ) : (
+        <Cs_ReviewDialog cs_bookingId={cs_data._id} cs_serviceTitle={cs_data.serviceTitle} cs_technicianName={cs_data.technicianName} />
+      ))}
   </div>
 );
 

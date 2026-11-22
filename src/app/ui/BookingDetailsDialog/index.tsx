@@ -6,6 +6,7 @@ import { cs_formatDay, cs_formatMoney } from "@/lib/cs_format";
 import type { Cs_Booking } from "@/lib/cs_types";
 import Cs_BookingTimeline from "@/app/ui/BookingTimeline";
 import Cs_StatusBadge from "@/app/ui/StatusBadge";
+import Cs_StarRating from "@/app/ui/StarRating";
 
 type Cs_BookingDetailsDialogProps = {
   cs_data: Cs_Booking;
@@ -66,6 +67,15 @@ const Cs_BookingDetailsDialog = ({ cs_data, cs_viewer = "customer" }: Cs_Booking
                 {cs_data.problemDescription}
               </p>
             </div>
+            {cs_data.rating && (
+              <div>
+                <p className="text-sm text-(--cs_body_color)">{cs_viewer === "customer" ? "Your review" : "Customer review"}</p>
+                <div className="mt-1 rounded-xl border border-amber-500/30 bg-amber-500/5 p-3">
+                  <Cs_StarRating cs_value={cs_data.rating} cs_size="md" />
+                  {cs_data.review && <p className="mt-2 text-sm leading-relaxed text-(--cs_heading_color)">{cs_data.review}</p>}
+                </div>
+              </div>
+            )}
           </div>
           <div className="rounded-xl border border-(--cs_border_color) p-4 sm:min-w-52">
             <p className="mb-4 text-xs font-semibold tracking-wide text-(--cs_body_color) uppercase">Job timeline</p>

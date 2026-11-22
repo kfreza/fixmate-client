@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ChevronRightIcon, StarIcon } from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import { cs_getCategoryPath } from "@/lib/cs_constants";
+import { cs_plural } from "@/lib/cs_format";
 import { CS_CATEGORY_ICONS } from "@/lib/cs_categoryIcons";
 import { cs_getServiceDetails } from "@/lib/cs_getServiceDetails";
 import Cs_ServiceBookingCard from "@/app/ui/ServiceBookingCard";
 import Cs_TechnicianCard from "@/app/ui/TechnicianCard";
 import Cs_RequestAction from "@/app/ui/RequestAction";
+import Cs_StarRating from "@/app/ui/StarRating";
+import Cs_ServiceReviews from "@/app/ui/ServiceReviews";
 
 export const generateMetadata = async ({ params }: PageProps<"/services/[id]">): Promise<Metadata> => {
   const { id: cs_serviceId } = await params;
@@ -58,17 +61,15 @@ const Cs_ServiceDetailsPage = async ({ params }: PageProps<"/services/[id]">) =>
               {Cs_CategoryIcon && <Cs_CategoryIcon className="size-4 text-(--cs_primary_color)" />}
               {cs_service.category}
             </Link>
-            <span className="flex items-center gap-1.5 text-sm text-(--cs_body_color)">
-              <StarIcon className="size-4 fill-amber-400 text-amber-400" />
-              {cs_service.reviewCount ? (
-                <>
-                  <span className="font-semibold text-(--cs_heading_color)">{cs_service.avgRating?.toFixed(1)}</span>
-                  {`(${cs_service.reviewCount} ${cs_service.reviewCount === 1 ? "review" : "reviews"})`}
-                </>
-              ) : (
-                "No reviews yet"
-              )}
-            </span>
+            {cs_service.reviewCount ? (
+              <a href="#reviews" className="flex items-center gap-1.5 text-sm text-(--cs_body_color) hover:underline">
+                <Cs_StarRating cs_value={cs_service.avgRating ?? 0} />
+                <span className="font-semibold text-(--cs_heading_color)">{cs_service.avgRating?.toFixed(1)}</span>
+                {`(${cs_plural(cs_service.reviewCount, "review")})`}
+              </a>
+            ) : (
+              <span className="text-sm text-(--cs_body_color)">No reviews yet</span>
+            )}
           </div>
 
           <h1 className="mt-4 font-heading text-3xl leading-tight font-bold tracking-tight text-(--cs_heading_color) md:text-4xl">
@@ -77,6 +78,8 @@ const Cs_ServiceDetailsPage = async ({ params }: PageProps<"/services/[id]">) =>
 
           <h2 className="mt-8 text-lg font-semibold text-(--cs_heading_color)">About this service</h2>
           <p className="mt-3 leading-relaxed whitespace-pre-line text-(--cs_body_color)">{cs_service.description}</p>
+
+          <Cs_ServiceReviews cs_serviceId={cs_service._id} />
         </div>
 
         <aside className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">

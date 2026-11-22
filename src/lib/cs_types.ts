@@ -85,6 +85,7 @@ export interface Cs_Booking {
   statusHistory: Cs_StatusHistoryItem[];
   rating?: number;
   review?: string;
+  reviewedAt?: string;
   createdAt: string;
 }
 
@@ -182,4 +183,18 @@ export interface Cs_Payment {
 export interface Cs_AdminPaymentsResponse extends Cs_ListResponse<Cs_Payment> {
   totalRevenue: number;
   count: number;
+}
+
+// Public review from /api/services/:id/reviews
+export interface Cs_ReviewItem {
+  _id: string;
+  customerName: string;
+  rating: number;
+  review: string;
+  reviewedAt?: string;
+}
+
+export interface Cs_ReviewsResponse extends Cs_ListResponse<Cs_ReviewItem> {
+  avgRating: number;
+  reviewCount: number;
 }
