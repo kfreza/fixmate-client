@@ -21,6 +21,7 @@ const Cs_PayNowButton = ({ cs_bookingId, cs_amount }: Cs_PayNowButtonProps) => {
       const { data: cs_data } = await cs_api.post<{ url: string }>("/api/payments/create-checkout-session", {
         bookingId: cs_bookingId,
       });
+      toast.loading("Redirecting to secure Stripe checkout…");
       window.location.assign(cs_data.url);
     } catch (cs_error) {
       toast.error(cs_getErrorMessage(cs_error, "Could not start the payment"));

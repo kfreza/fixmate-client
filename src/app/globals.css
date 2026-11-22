@@ -658,6 +658,10 @@
     @apply border-(--cs_primary_color) ring-3 ring-ring/30;
   }
 
+  .cs_result_card {
+    @apply mx-auto flex max-w-lg flex-col items-center rounded-3xl border border-(--cs_border_color) bg-(--cs_card_color) px-6 py-10 text-center shadow-sm md:px-10;
+  }
+
   .cs_code {
     @apply rounded-md bg-(--cs_soft_color) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--cs_heading_color);
   }
