@@ -22,6 +22,12 @@ export const cs_getCategoryPath = (cs_category: string) =>
 export const cs_getDashboardPath = (cs_role?: string | null) =>
   `/dashboard/${CS_ROLES.includes(cs_role as Cs_Role) ? cs_role : "customer"}`;
 
+export const CS_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Only same-site paths, blocks open redirects
+export const cs_getSafeRedirect = (cs_path?: string | null) =>
+  cs_path && cs_path.startsWith("/") && !cs_path.startsWith("//") && !cs_path.startsWith("/\\") ? cs_path : null;
+
 export const CS_PASSWORD_RULES = [
   { cs_test: (cs_value: string) => cs_value.length >= 6, cs_message: "At least 6 characters" },
   { cs_test: (cs_value: string) => /[A-Z]/.test(cs_value), cs_message: "At least one uppercase letter" },

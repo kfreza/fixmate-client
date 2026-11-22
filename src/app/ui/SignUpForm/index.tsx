@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signUp } from "@/lib/auth-client";
 import {
+  CS_EMAIL_REGEX,
   CS_PASSWORD_RULES,
   cs_getDashboardPath,
   cs_getPasswordErrors,
@@ -22,8 +23,6 @@ const cs_data = {
     { value: "technician", icon: WrenchIcon, title: "Technician", text: "I offer repair services" },
   ] as const,
 };
-
-const CS_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Cs_SignUpErrors = Partial<Record<"name" | "email" | "password", string>>;
 

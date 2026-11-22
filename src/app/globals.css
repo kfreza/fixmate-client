@@ -311,6 +311,10 @@
     @apply text-xs font-medium text-destructive;
   }
 
+  .cs_divider {
+    @apply flex items-center gap-3 text-xs text-(--cs_body_color) before:h-px before:flex-1 before:bg-(--cs_border_color) after:h-px after:flex-1 after:bg-(--cs_border_color);
+  }
+
   .cs_role_card {
     @apply relative flex cursor-pointer flex-col gap-1 rounded-xl border-2 border-(--cs_border_color) p-4 transition-colors hover:border-(--cs_primary_color)/50 has-focus-visible:ring-3 has-focus-visible:ring-ring/50;
   }
