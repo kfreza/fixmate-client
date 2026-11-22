@@ -34,3 +34,17 @@ export interface Cs_PagedResponse<T> extends Cs_ListResponse<T> {
   pages: number;
   limit: number;
 }
+
+// Public technician info on the details page
+export interface Cs_TechnicianSummary {
+  name: string;
+  image?: string | null;
+  area?: string;
+  bio?: string;
+}
+
+export interface Cs_ServiceDetailsResponse {
+  success: boolean;
+  service: Cs_Service;
+  technician: Cs_TechnicianSummary;
+}

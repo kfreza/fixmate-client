@@ -521,6 +521,15 @@
     @apply pointer-events-none opacity-40;
   }
 
+  /* Service details */
+  .cs_detail_image {
+    @apply relative aspect-[16/10] overflow-hidden rounded-2xl border border-(--cs_border_color) bg-(--cs_soft_color);
+  }
+
+  .cs_detail_card {
+    @apply rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-6;
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }
