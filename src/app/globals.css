@@ -561,6 +561,44 @@
     @apply inline-flex size-14 animate-spin items-center justify-center rounded-2xl bg-(--cs_primary_color) text-(--cs_primary_text_color) shadow-md shadow-teal-700/20 [animation-duration:1.6s];
   }
 
+  /* Dashboard */
+  .cs_sidebar {
+    @apply sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-(--cs_border_color) bg-(--cs_card_color) transition-[width] duration-300 lg:flex;
+  }
+
+  .cs_sidebar.cs_collapsed {
+    @apply w-[76px];
+  }
+
+  .cs_sidebar.cs_collapsed .cs_logo_text,
+  .cs_sidebar.cs_collapsed .cs_sidebar_label {
+    @apply sr-only;
+  }
+
+  .cs_sidebar.cs_collapsed .cs_sidebar_link {
+    @apply justify-center px-0;
+  }
+
+  .cs_sidebar_link {
+    @apply flex w-full items-center gap-3 rounded-xl px-3.5 py-2.5 text-left text-sm font-medium text-(--cs_body_color) transition-colors hover:bg-(--cs_soft_color) hover:text-(--cs_heading_color);
+  }
+
+  .cs_sidebar_link.cs_active {
+    @apply bg-(--cs_primary_color) text-(--cs_primary_text_color) shadow-md shadow-teal-700/15 hover:bg-(--cs_primary_color) hover:text-(--cs_primary_text_color);
+  }
+
+  .cs_dashboard_topbar {
+    @apply sticky top-0 z-40 flex h-18 items-center justify-between gap-3 border-b border-(--cs_border_color) bg-(--cs_surface_color)/85 px-4 backdrop-blur-md sm:px-6 lg:px-8;
+  }
+
+  .cs_stat_card {
+    @apply rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-5;
+  }
+
+  .cs_status_badge {
+    @apply inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold whitespace-nowrap;
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }

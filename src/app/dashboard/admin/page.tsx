@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import { cs_requireRole } from "@/lib/cs_session";
+import Cs_DashboardHeading from "@/app/ui/DashboardHeading";
 
 export const metadata: Metadata = { title: "Admin Dashboard" };
 
-// Placeholder until the dashboard UI commits
+// Placeholder until the overview commit
 const Cs_AdminOverviewPage = async () => {
   const cs_session = await cs_requireRole("admin");
   return (
-    <section className="cs_container py-16">
-      <h1 className="cs_section_title">Admin Dashboard</h1>
-      <p className="cs_section_subtitle">Signed in as {cs_session.user.email}</p>
-    </section>
+    <Cs_DashboardHeading
+      cs_title={`Welcome back, ${cs_session.user.name.split(" ")[0]}`}
+      cs_subtitle="Your overview will appear here."
+    />
   );
 };
 
