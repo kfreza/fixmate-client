@@ -38,7 +38,7 @@ const Cs_AddServicePage = async () => {
               <Input id="cs_tech_email" value={cs_session.user.email} readOnly className="cs_input cs_input_readonly" />
             </div>
           </div>
-          <Cs_ServiceForm cs_mode="create" />
+          <Cs_ServiceForm cs_mode="create" cs_redirectTo="/dashboard/technician/my-services" />
         </section>
 
         <aside className="cs_chart_card h-fit">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { ImageUpIcon, LoaderCircleIcon, SaveIcon, SendIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -24,12 +25,14 @@ type Cs_ServiceFormProps = {
   cs_initial?: Cs_ServiceFormValues;
   cs_initialImage?: string;
   cs_onDone?: () => void;
+  cs_redirectTo?: string;
 };
 
 type Cs_Phase = "idle" | "uploading" | "saving";
 
 // Shared by Add Service and the edit modal
-const Cs_ServiceForm = ({ cs_mode, cs_serviceId, cs_initial, cs_initialImage, cs_onDone }: Cs_ServiceFormProps) => {
+const Cs_ServiceForm = ({ cs_mode, cs_serviceId, cs_initial, cs_initialImage, cs_onDone, cs_redirectTo }: Cs_ServiceFormProps) => {
+  const cs_router = useRouter();
   const [cs_values, cs_setValues] = useState<Cs_ServiceFormValues>(cs_initial ?? CS_EMPTY_SERVICE_FORM);
   const [cs_file, cs_setFile] = useState<File | null>(null);
   const [cs_preview, cs_setPreview] = useState<string | null>(null);
@@ -114,6 +117,7 @@ const Cs_ServiceForm = ({ cs_mode, cs_serviceId, cs_initial, cs_initialImage, cs
         toast.success("Service updated", { description: "Changes go back to admin review before going live again." });
       }
       cs_onDone?.();
+      if (cs_redirectTo) cs_router.push(cs_redirectTo);
     } catch (cs_error) {
       toast.error(cs_getErrorMessage(cs_error, "Could not save the service"));
     } finally {
