@@ -7,18 +7,12 @@ import {
 } from "lucide-react";
 import { cs_requireRole } from "@/lib/cs_session";
 import { cs_serverApi } from "@/lib/cs_serverApi";
-import { cs_formatDateTime, cs_formatMoney } from "@/lib/cs_format";
+import { cs_formatDateTime, cs_formatMoney, cs_shortId } from "@/lib/cs_format";
 import type { Cs_AdminPaymentsResponse } from "@/lib/cs_types";
 import Cs_DashboardHeading from "@/app/ui/DashboardHeading";
 import Cs_StatCard from "@/app/ui/StatCard";
 
 export const metadata: Metadata = { title: "Transactions" };
-
-// Stripe ids are long; the start and end are enough to match them
-const cs_shortId = (cs_id: string) =>
-  cs_id && cs_id.length > 18
-    ? `${cs_id.slice(0, 10)}…${cs_id.slice(-6)}`
-    : cs_id || "—";
 
 const Cs_AdminTransactionsPage = async () => {
   await cs_requireRole("admin");

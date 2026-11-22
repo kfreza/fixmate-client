@@ -28,3 +28,6 @@ export const cs_formatDateTime = (cs_iso: string) =>
 
 // 1 technician, 2 technicians
 export const cs_plural = (cs_count: number, cs_word: string) => `${cs_count} ${cs_word}${cs_count === 1 ? "" : "s"}`;
+
+// Stripe ids are long; the start and end are enough to match them
+export const cs_shortId = (cs_id: string) => (cs_id && cs_id.length > 18 ? `${cs_id.slice(0, 10)}…${cs_id.slice(-6)}` : cs_id || "—");
