@@ -4,6 +4,20 @@ export type Cs_Role = (typeof CS_ROLES)[number];
 // Roles a user can pick on sign up
 export const CS_SIGNUP_ROLES = ["customer", "technician"] as const;
 
+export const CS_CATEGORIES = [
+  "Smartphone",
+  "Laptop & PC",
+  "AC",
+  "Refrigerator",
+  "TV",
+  "Washing Machine",
+  "Electrical",
+] as const;
+export type Cs_Category = (typeof CS_CATEGORIES)[number];
+
+export const cs_getCategoryPath = (cs_category: string) =>
+  `/services?category=${encodeURIComponent(cs_category)}`;
+
 export const cs_getDashboardPath = (cs_role?: string | null) =>
   `/dashboard/${CS_ROLES.includes(cs_role as Cs_Role) ? cs_role : "customer"}`;
 

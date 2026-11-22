@@ -196,6 +196,10 @@
     @apply inline-flex size-9 -rotate-6 items-center justify-center rounded-xl bg-(--cs_primary_color) text-(--cs_primary_text_color) shadow-md shadow-teal-700/20 transition-transform duration-300;
   }
 
+  .cs_logo_accent {
+    @apply text-(--cs_primary_color);
+  }
+
   .cs_logo:hover .cs_logo_icon {
     @apply rotate-12;
   }
@@ -240,6 +244,45 @@
 
   .cs_avatar_btn {
     @apply rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-(--cs_surface_color) transition-all outline-none hover:ring-(--cs_primary_color) focus-visible:ring-(--cs_primary_color);
+  }
+
+  /* Footer (dark in both themes) */
+  .cs_site_footer {
+    --cs_footer_accent: #2dd4bf;
+    @apply relative bg-[#0b1424] text-slate-300;
+  }
+
+  .cs_site_footer::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-teal-400/50 to-transparent;
+  }
+
+  .cs_footer_logo .cs_logo_text {
+    @apply text-white;
+  }
+
+  .cs_footer_logo .cs_logo_accent {
+    @apply text-(--cs_footer_accent);
+  }
+
+  .cs_footer_title {
+    @apply mb-5 text-base font-semibold text-white;
+  }
+
+  .cs_footer_list {
+    @apply flex flex-col gap-3;
+  }
+
+  .cs_footer_link {
+    @apply text-sm text-slate-400 transition-colors hover:text-(--cs_footer_accent);
+  }
+
+  .cs_footer_contact_icon {
+    @apply inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/5 text-(--cs_footer_accent);
+  }
+
+  .cs_social_link {
+    @apply inline-flex size-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-300 transition-all hover:-translate-y-0.5 hover:border-(--cs_footer_accent) hover:text-(--cs_footer_accent);
   }
 
   .cs_role_badge {

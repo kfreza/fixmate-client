@@ -9,7 +9,7 @@ const Cs_Logo = ({ cs_className = "" }: { cs_className?: string }) => {
         <WrenchIcon className="size-5" strokeWidth={2.4} />
       </span>
       <span className="cs_logo_text">
-        Fix<span className="text-(--cs_primary_color)">Mate</span>
+        Fix<span className="cs_logo_accent">Mate</span>
       </span>
     </Link>
   );
