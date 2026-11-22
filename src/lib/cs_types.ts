@@ -1,4 +1,4 @@
-import type { CS_SERVICE_MODES, Cs_Category } from "@/lib/cs_constants";
+import type { CS_SERVICE_MODES, Cs_Category, Cs_Role } from "@/lib/cs_constants";
 
 export type Cs_ServiceMode = (typeof CS_SERVICE_MODES)[number];
 export type Cs_ApprovalStatus = "pending" | "approved" | "rejected";
@@ -127,4 +127,37 @@ export interface Cs_TechnicianStatsResponse {
     totalEarnings: number;
   };
   charts: { jobsByStatus: Cs_StatusCount[]; monthlyEarnings: Cs_MonthAmount[] };
+}
+
+export interface Cs_AdminStatsResponse {
+  success: boolean;
+  stats: {
+    totalUsers: number;
+    totalCustomers: number;
+    totalTechnicians: number;
+    totalServices: number;
+    pendingServices: number;
+    totalBookings: number;
+    activeBookings: number;
+    totalRevenue: number;
+    totalPayments: number;
+  };
+  charts: {
+    bookingsByStatus: Cs_StatusCount[];
+    monthlyRevenue: Cs_MonthAmount[];
+    servicesByCategory: { category: Cs_Category; count: number }[];
+    usersByRole: { role: Cs_Role; count: number }[];
+  };
+}
+
+// User as returned by /api/admin/users
+export interface Cs_AdminUser {
+  _id: string;
+  name: string;
+  email: string;
+  image?: string | null;
+  role: Cs_Role;
+  phone?: string;
+  area?: string;
+  createdAt?: string;
 }

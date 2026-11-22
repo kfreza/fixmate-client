@@ -25,3 +25,6 @@ export const cs_formatDateTime = (cs_iso: string) =>
     hour12: true,
     timeZone: "Asia/Dhaka",
   });
+
+// 1 technician, 2 technicians
+export const cs_plural = (cs_count: number, cs_word: string) => `${cs_count} ${cs_word}${cs_count === 1 ? "" : "s"}`;
