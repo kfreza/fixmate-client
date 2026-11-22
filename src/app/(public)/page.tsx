@@ -6,7 +6,7 @@ import Cs_ThemeToggle from "@/app/ui/ThemeToggle";
 // Temporary theme preview, replaced by the home page in C10
 const Cs_HomePage = () => {
   return (
-    <main className="cs_blueprint_bg flex flex-1 items-center">
+    <div className="cs_blueprint_bg flex flex-1 items-center">
       <div className="cs_container cs_section flex flex-col items-center gap-6 text-center">
         <Cs_ThemeToggle />
         <h1 className="cs_section_title">FixMate</h1>
@@ -23,7 +23,7 @@ const Cs_HomePage = () => {
           </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

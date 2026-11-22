@@ -4,6 +4,9 @@ export type Cs_Role = (typeof CS_ROLES)[number];
 // Roles a user can pick on sign up
 export const CS_SIGNUP_ROLES = ["customer", "technician"] as const;
 
+export const cs_getDashboardPath = (cs_role?: string | null) =>
+  `/dashboard/${CS_ROLES.includes(cs_role as Cs_Role) ? cs_role : "customer"}`;
+
 export const CS_PASSWORD_RULES = [
   { cs_test: (cs_value: string) => cs_value.length >= 6, cs_message: "At least 6 characters" },
   { cs_test: (cs_value: string) => /[A-Z]/.test(cs_value), cs_message: "At least one uppercase letter" },

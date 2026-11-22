@@ -186,4 +186,63 @@
       linear-gradient(90deg, var(--cs_grid_color) 1px, transparent 1px);
     background-size: 32px 32px;
   }
+
+  /* Logo */
+  .cs_logo {
+    @apply inline-flex shrink-0 items-center gap-2.5;
+  }
+
+  .cs_logo_icon {
+    @apply inline-flex size-9 -rotate-6 items-center justify-center rounded-xl bg-(--cs_primary_color) text-(--cs_primary_text_color) shadow-md shadow-teal-700/20 transition-transform duration-300;
+  }
+
+  .cs_logo:hover .cs_logo_icon {
+    @apply rotate-12;
+  }
+
+  .cs_logo_text {
+    @apply font-heading text-[22px] leading-none font-bold tracking-tight text-(--cs_heading_color);
+  }
+
+  /* Header */
+  .cs_site_header {
+    @apply sticky top-0 z-50 w-full border-b border-transparent bg-(--cs_surface_color)/80 backdrop-blur-md transition-all duration-300;
+  }
+
+  .cs_sticky_active {
+    @apply border-(--cs_border_color) bg-(--cs_card_color)/90 shadow-sm;
+  }
+
+  .cs_nav_link {
+    @apply relative rounded-lg px-4 py-2 text-sm font-medium text-(--cs_body_color) transition-colors hover:text-(--cs_heading_color);
+  }
+
+  .cs_nav_link.cs_active {
+    @apply text-(--cs_primary_color);
+  }
+
+  .cs_nav_link.cs_active::after {
+    content: "";
+    @apply absolute inset-x-4 -bottom-[17px] h-0.5 rounded-full bg-(--cs_primary_color);
+  }
+
+  .cs_mobile_nav_link {
+    @apply flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-[15px] font-medium text-(--cs_heading_color) transition-colors hover:bg-(--cs_soft_color);
+  }
+
+  .cs_mobile_nav_link.cs_active {
+    @apply bg-(--cs_soft_color) text-(--cs_primary_color);
+  }
+
+  .cs_menu_toggle {
+    @apply inline-flex size-10 items-center justify-center rounded-xl border border-(--cs_border_color) bg-(--cs_card_color) text-(--cs_heading_color);
+  }
+
+  .cs_avatar_btn {
+    @apply rounded-full ring-2 ring-transparent ring-offset-2 ring-offset-(--cs_surface_color) transition-all outline-none hover:ring-(--cs_primary_color) focus-visible:ring-(--cs_primary_color);
+  }
+
+  .cs_role_badge {
+    @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
+  }
 }
