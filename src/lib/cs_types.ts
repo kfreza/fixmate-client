@@ -113,3 +113,18 @@ export interface Cs_CustomerStatsResponse {
   };
   charts: { bookingsByStatus: Cs_StatusCount[]; monthlySpending: Cs_MonthAmount[] };
 }
+
+export interface Cs_TechnicianStatsResponse {
+  success: boolean;
+  stats: {
+    totalServices: number;
+    approvedServices: number;
+    pendingServices: number;
+    totalJobs: number;
+    newRequests: number;
+    activeJobs: number;
+    completedJobs: number;
+    totalEarnings: number;
+  };
+  charts: { jobsByStatus: Cs_StatusCount[]; monthlyEarnings: Cs_MonthAmount[] };
+}
