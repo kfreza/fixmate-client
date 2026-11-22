@@ -16,6 +16,7 @@ import {
 import { signOut } from "@/lib/auth-client";
 import { cs_clearToken } from "@/lib/cs_api";
 import { cs_getDashboardPath } from "@/lib/cs_constants";
+import { cs_getInitials } from "@/lib/cs_format";
 import Cs_RoleBadge from "@/app/ui/RoleBadge";
 
 export interface Cs_MenuUser {
@@ -24,14 +25,6 @@ export interface Cs_MenuUser {
   image?: string | null;
   role?: string | null;
 }
-
-export const cs_getInitials = (cs_name: string) =>
-  cs_name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((cs_part) => cs_part[0]?.toUpperCase())
-    .join("");
 
 // Shared sign out (navbar + mobile menu)
 export const useSignOut = () => {

@@ -420,6 +420,74 @@
     @apply absolute top-3 left-3 rounded-full bg-(--cs_card_color)/95 px-3 py-1 text-xs font-semibold text-(--cs_heading_color) shadow-sm backdrop-blur;
   }
 
+  /* How it works */
+  .cs_step_card {
+    @apply relative rounded-2xl border border-(--cs_border_color) bg-(--cs_surface_color) p-6 transition-all duration-300 hover:-translate-y-1 hover:border-(--cs_primary_color)/40 hover:shadow-lg hover:shadow-slate-900/5;
+  }
+
+  .cs_step_icon {
+    @apply inline-flex size-12 items-center justify-center rounded-xl bg-(--cs_primary_color) text-(--cs_primary_text_color) shadow-md shadow-teal-700/20;
+  }
+
+  .cs_step_card:last-child .cs_step_icon {
+    @apply bg-(--cs_accent_color) text-(--cs_accent_text_color) shadow-orange-500/20;
+  }
+
+  .cs_step_number {
+    @apply font-heading text-4xl font-bold text-(--cs_border_color);
+  }
+
+  /* Categories */
+  .cs_category_card {
+    @apply relative flex flex-col rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-5 transition-all duration-300 hover:-translate-y-1 hover:border-(--cs_primary_color) hover:shadow-lg hover:shadow-slate-900/5 md:p-6;
+  }
+
+  .cs_category_icon {
+    @apply inline-flex size-12 items-center justify-center rounded-xl bg-(--cs_soft_color) text-(--cs_primary_color) transition-colors duration-300 group-hover:bg-(--cs_primary_color) group-hover:text-(--cs_primary_text_color);
+  }
+
+  .cs_category_arrow {
+    @apply absolute top-5 right-5 size-4 text-(--cs_body_color) opacity-0 transition-all duration-300 group-hover:opacity-100;
+  }
+
+  .cs_category_card_all {
+    @apply border-transparent bg-(--cs_primary_color) text-(--cs_primary_text_color) hover:border-transparent;
+  }
+
+  .cs_category_card_all .cs_category_icon {
+    @apply bg-white/15 text-(--cs_primary_text_color) group-hover:bg-white/25 group-hover:text-(--cs_primary_text_color);
+  }
+
+  .cs_category_card_all .cs_category_arrow {
+    @apply text-(--cs_primary_text_color) opacity-100;
+  }
+
+  /* Why choose us (dark band in both themes) */
+  .cs_why_section {
+    @apply relative overflow-hidden bg-linear-to-br from-[#0b5f5c] via-[#0b2a33] to-[#0b1424] py-16 md:py-24;
+  }
+
+  .cs_why_section .cs_eyebrow {
+    @apply border-white/15 bg-white/5 text-[#5eead4];
+  }
+
+  .cs_stat_tile {
+    @apply flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/5 p-5;
+  }
+
+  .cs_why_point {
+    @apply rounded-2xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/10;
+  }
+
+  .cs_why_icon {
+    @apply inline-flex size-11 items-center justify-center rounded-xl bg-[#2dd4bf]/15 text-[#5eead4];
+  }
+
+  /* Testimonials */
+  .cs_testimonial_card {
+    @apply flex h-full flex-col rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-7;
+  }
+
   .cs_role_badge {
     @apply inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide uppercase;
   }
