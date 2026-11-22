@@ -77,7 +77,7 @@ const Cs_AdminBookingsPage = async ({
           </p>
 
           {/* Desktop table */}
-          <div className="cs_table_wrap mt-3 hidden md:block">
+          <div className="cs_table_wrap mt-3 hidden xl:block">
             <table className="cs_table">
               <thead>
                 <tr>
@@ -136,7 +136,7 @@ const Cs_AdminBookingsPage = async ({
           </div>
 
           {/* Mobile cards */}
-          <ul className="mt-3 flex flex-col gap-4 md:hidden">
+          <ul className="mt-3 grid gap-4 md:grid-cols-2 xl:hidden">
             {cs_bookings.map((cs_booking) => (
               <li key={cs_booking._id} className="cs_mobile_card">
                 <div className="flex items-start justify-between gap-3">

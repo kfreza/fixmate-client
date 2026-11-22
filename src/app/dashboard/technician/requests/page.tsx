@@ -64,7 +64,7 @@ const Cs_TechnicianRequestsPage = async ({ searchParams }: PageProps<"/dashboard
       ) : (
         <>
           {/* Desktop table */}
-          <div className="cs_table_wrap mt-6 hidden md:block">
+          <div className="cs_table_wrap mt-6 hidden xl:block">
             <table className="cs_table">
               <thead>
                 <tr>
@@ -106,7 +106,7 @@ const Cs_TechnicianRequestsPage = async ({ searchParams }: PageProps<"/dashboard
           </div>
 
           {/* Mobile cards */}
-          <ul className="mt-6 flex flex-col gap-4 md:hidden">
+          <ul className="mt-6 grid gap-4 md:grid-cols-2 xl:hidden">
             {cs_jobs.map((cs_job) => (
               <li key={cs_job._id} className="cs_mobile_card">
                 <div className="flex items-start justify-between gap-3">

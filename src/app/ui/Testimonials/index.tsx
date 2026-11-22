@@ -35,7 +35,7 @@ const Cs_Testimonials = () => {
           <h2 className="cs_section_title mt-4">{cs_data.title}</h2>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {cs_data.reviews.map((cs_review) => (
             <figure key={cs_review.name} className="cs_testimonial_card">
               <div className="flex items-center justify-between">

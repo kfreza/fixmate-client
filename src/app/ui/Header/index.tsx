@@ -41,11 +41,11 @@ const Cs_Header = () => {
 
   return (
     <header className={`cs_site_header ${cs_isSticky ? "cs_sticky_active" : ""}`}>
-      <div className="cs_container flex h-18 items-center justify-between gap-4 md:grid md:grid-cols-[1fr_auto_1fr]">
+      <div className="cs_container flex h-18 items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
         <Cs_Logo cs_className="justify-self-start" />
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {cs_data.menuItems.map((cs_item) => (
             <Link
               key={cs_item.href}
@@ -61,7 +61,7 @@ const Cs_Header = () => {
           <Cs_ThemeToggle />
 
           {/* Desktop auth */}
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             {cs_isPending ? (
               <Skeleton className="size-10 rounded-full" />
             ) : cs_user ? (
@@ -80,7 +80,7 @@ const Cs_Header = () => {
 
           {/* Mobile menu */}
           <Sheet>
-            <SheetTrigger className="cs_menu_toggle md:hidden" aria-label="Open menu">
+            <SheetTrigger className="cs_menu_toggle lg:hidden" aria-label="Open menu">
               <MenuIcon className="size-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[85%] max-w-sm gap-0 p-0">

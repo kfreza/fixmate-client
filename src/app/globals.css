@@ -617,8 +617,9 @@
     @apply border-(--cs_primary_color) bg-(--cs_primary_color) text-(--cs_primary_text_color) hover:text-(--cs_primary_text_color);
   }
 
+  /* relative keeps sr-only (absolute) headers inside the scroll box */
   .cs_table_wrap {
-    @apply overflow-x-auto rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color);
+    @apply relative overflow-x-auto rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color);
   }
 
   .cs_table {

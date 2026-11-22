@@ -81,7 +81,7 @@ const Cs_CustomerBookingsPage = async ({ searchParams }: PageProps<"/dashboard/c
       ) : (
         <>
           {/* Desktop table */}
-          <div className="cs_table_wrap mt-6 hidden md:block">
+          <div className="cs_table_wrap mt-6 hidden xl:block">
             <table className="cs_table">
               <thead>
                 <tr>
@@ -125,7 +125,7 @@ const Cs_CustomerBookingsPage = async ({ searchParams }: PageProps<"/dashboard/c
           </div>
 
           {/* Mobile cards */}
-          <ul className="mt-6 flex flex-col gap-4 md:hidden">
+          <ul className="mt-6 grid gap-4 md:grid-cols-2 xl:hidden">
             {cs_bookings.map((cs_booking) => (
               <li key={cs_booking._id} className="cs_mobile_card">
                 <div className="flex items-start gap-3">

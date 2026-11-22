@@ -68,7 +68,7 @@ const Cs_MyServicesPage = async () => {
           </div>
 
           {/* Desktop table */}
-          <div className="cs_table_wrap hidden md:block">
+          <div className="cs_table_wrap hidden xl:block">
             <table className="cs_table">
               <thead>
                 <tr>
@@ -116,7 +116,7 @@ const Cs_MyServicesPage = async () => {
           </div>
 
           {/* Mobile cards */}
-          <ul className="flex flex-col gap-4 md:hidden">
+          <ul className="grid gap-4 md:grid-cols-2 xl:hidden">
             {cs_services.map((cs_service) => (
               <li key={cs_service._id} className="cs_mobile_card">
                 <div className="flex items-start gap-3">
