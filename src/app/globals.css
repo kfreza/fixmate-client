@@ -658,6 +658,10 @@
     @apply border-(--cs_primary_color) ring-3 ring-ring/30;
   }
 
+  .cs_code {
+    @apply rounded-md bg-(--cs_soft_color) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--cs_heading_color);
+  }
+
   .cs_mobile_card {
     @apply rounded-2xl border border-(--cs_border_color) bg-(--cs_card_color) p-4;
   }

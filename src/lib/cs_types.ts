@@ -161,3 +161,25 @@ export interface Cs_AdminUser {
   area?: string;
   createdAt?: string;
 }
+
+// Payment as returned by the Express API
+export interface Cs_Payment {
+  _id: string;
+  bookingId: string;
+  serviceTitle: string;
+  customerName: string;
+  customerEmail: string;
+  technicianName: string;
+  technicianEmail: string;
+  amount: number;
+  currency: string;
+  transactionId: string;
+  stripeSessionId: string;
+  paymentStatus: "paid";
+  paidAt: string;
+}
+
+export interface Cs_AdminPaymentsResponse extends Cs_ListResponse<Cs_Payment> {
+  totalRevenue: number;
+  count: number;
+}

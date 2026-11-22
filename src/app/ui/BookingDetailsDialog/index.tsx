@@ -9,15 +9,22 @@ import Cs_StatusBadge from "@/app/ui/StatusBadge";
 
 type Cs_BookingDetailsDialogProps = {
   cs_data: Cs_Booking;
-  // Customer sees the technician; technician sees the customer
-  cs_viewer?: "customer" | "technician";
+  // Each side sees the other party; admin sees both
+  cs_viewer?: "customer" | "technician" | "admin";
 };
 
 const Cs_BookingDetailsDialog = ({ cs_data, cs_viewer = "customer" }: Cs_BookingDetailsDialogProps) => {
+  const cs_customerRow = { label: "Customer", value: `${cs_data.customerName} (${cs_data.customerEmail})` };
+  const cs_technicianRow = {
+    label: "Technician",
+    value: cs_viewer === "admin" ? `${cs_data.technicianName} (${cs_data.technicianEmail})` : cs_data.technicianName,
+  };
   const cs_rows = [
-    cs_viewer === "customer"
-      ? { label: "Technician", value: cs_data.technicianName }
-      : { label: "Customer", value: `${cs_data.customerName} (${cs_data.customerEmail})` },
+    ...(cs_viewer === "customer"
+      ? [cs_technicianRow]
+      : cs_viewer === "technician"
+        ? [cs_customerRow]
+        : [cs_customerRow, cs_technicianRow]),
     { label: "Preferred date", value: cs_formatDay(cs_data.preferredDate) },
     { label: "Phone", value: cs_data.customerPhone },
     { label: "Address", value: cs_data.address },
