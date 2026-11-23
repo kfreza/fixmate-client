@@ -4,8 +4,8 @@
 
 FixMate is a repair service platform for Dhaka. Customers find verified technicians for phones, laptops, ACs, fridges, TVs, washing machines and electrical work, send a repair request, follow the job step by step, and pay online only after it is done. Technicians manage their listings and jobs, and admins keep the marketplace safe.
 
-- **Live site:** `https://<your-client>.vercel.app` (add after deploy)
-- **API:** see the `fixmate-server` repository
+- **Live site:** https://fixmate-client-six.vercel.app
+- **API:** https://fixmate-server-ruby.vercel.app (see the `fixmate-server` repository)
 
 ## Test accounts
 
@@ -97,7 +97,7 @@ For demo services, bookings and payments, run `npm run seed:data` in `fixmate-se
 1. Import the repository in Vercel (framework preset: Next.js).
 2. Add the variables above with production values. Set `BETTER_AUTH_URL` to the deployed URL and `NEXT_PUBLIC_API_URL` to the deployed API.
 3. On the server, add this site's URL to `CS_CLIENT_URL` and `CS_CORS_ORIGINS`, then redeploy it.
-4. If you use Google login, add `https://<your-client>.vercel.app/api/auth/callback/google` as an authorized redirect URI in Google Cloud.
+4. If you use Google login, add `https://fixmate-client-six.vercel.app/api/auth/callback/google` as an authorized redirect URI in Google Cloud.
 
 ## npm packages
 
