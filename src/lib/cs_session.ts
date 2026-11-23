@@ -2,10 +2,14 @@ import { cache } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
+import { cs_connectMongo } from "@/lib/cs_mongodb";
 import { cs_getDashboardPath, cs_getSafeRedirect, type Cs_Role } from "@/lib/cs_constants";
 
 // Real session check (DB), once per request
-export const cs_getServerSession = cache(async () => auth.api.getSession({ headers: await headers() }));
+export const cs_getServerSession = cache(async () => {
+  await cs_connectMongo();
+  return auth.api.getSession({ headers: await headers() });
+});
 
 // Any logged-in user, else sign-in with redirect back
 export const cs_requireSession = async () => {

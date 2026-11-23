@@ -1,11 +1,13 @@
 import { headers } from "next/headers";
 import jwt from "jsonwebtoken";
 import { auth } from "@/lib/auth";
+import { cs_connectMongo } from "@/lib/cs_mongodb";
 
 const CS_TOKEN_TTL_SECONDS = 60 * 60; // 1 hour
 
 // GET /api/token → short-lived JWT for the Express API
 export const GET = async () => {
+  await cs_connectMongo();
   const cs_session = await auth.api.getSession({ headers: await headers() });
   if (!cs_session) {
     return Response.json({ success: false, message: "Unauthorized" }, { status: 401 });

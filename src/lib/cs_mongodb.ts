@@ -19,3 +19,6 @@ export const cs_mongoClient = cs_globalCache.cs_mongoClient ?? new MongoClient(c
 cs_globalCache.cs_mongoClient = cs_mongoClient;
 
 export const cs_db = cs_mongoClient.db(process.env.CS_DB_NAME || "fixmate");
+
+// A failed first connect leaves a closed topology that is never reopened; connect() reopens it (no-op when healthy)
+export const cs_connectMongo = () => cs_mongoClient.connect();
